@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My Blog</title>
+	<link rel="stylesheet" href="styles.css">
+	<script src="https://kit.fontawesome.com/5d977e5d53.js" crossorigin="anonymous"></script>
+</head>
+<body class="create-blog-page">
+	<header>
+        <h1>My Blog</h1>
+        <button id="back-button" onclick="window.location.href='../index.html'"><i class="fas fa-home"></i> Home</button>
+    </header>
+
+
+	<main>
+		<form id="create-blog-form">
+			<div class="form-group">
+				<label for="title">Blog Title</label>
+				<input type="text" id="title" name="title" required>
+			</div>
+			<div class="form-group">
+				<label for="content">Content</label>
+				<textarea id="content" name="content" rows="10" required></textarea>
+			</div>
+			<div class="form-group">
+				<label for="category">Category</label>
+				<select id="category" name="category" required>
+					<option value="technology">Technology</option>
+					<option value="sports">Sports</option>
+					<option value="law">Law</option>
+					<option value="lifestyle">Lifestyle</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="tags">Tags</label>
+				<input type="text" id="tags" name="tags" placeholder="Comma-separated tags">
+			</div>
+			<div class="form-group">
+				<label for="image">Upload Image</label>
+				<input type="file" id="image" name="image" accept="image/*">
+			</div>
+			<button type="submit">Submit</button>
+		</form>
+	</main>
+</body>
+</html>
