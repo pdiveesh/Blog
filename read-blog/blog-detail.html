@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/5d977e5d53.js" crossorigin="anonymous"></script>
+    <script defer src="blog-detail.js"></script>
+</head>
+<body>
+    <header>
+        <button id="back-button" onclick="window.history.back()">
+            <i class="fas fa-arrow-left"></i> Back
+        </button>
+    </header>
+
+    <main>
+        <div id="blog-details" class="blog-details">
+            <h1 id="blog-title"></h1>
+            <p><strong>Category:</strong> <span id="blog-category"></span></p>
+            <p><strong>Tags:</strong> <span id="blog-tags"></span></p>
+            <p><strong>Read Time:</strong> <span id="blog-read-time"></span> min</p>
+            <button id="show-content-button">Show Content</button>
+            <div id="blog-content" class="hidden">
+                <h2>Content</h2>
+                <p id="blog-content-text"></p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

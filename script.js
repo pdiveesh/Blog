@@ -77,14 +77,19 @@ function setupSearch() {
 
     // Insert the search container into the header
     const header = document.querySelector('header');
-    header.insertBefore(searchContainer, document.getElementById('create-blog'));
-
+    if (header) {
+        header.insertBefore(searchContainer, document.getElementById('create-blog'));
+    }
+    
     // Add event listener for search functionality
     searchInput.addEventListener('input', async (e) => {
         const searchTerm = e.target.value.toLowerCase();
         if (searchTerm.length > 2) { // Only search if the term is longer than 2 characters
             try {
-                const response = await fetch(`/search?q=${encodeURIComponent(searchTerm)}`);
+                const response = await fetch(`http://localhost:8080/blogposts/search?q=${encodeURIComponent(searchTerm)}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 const results = await response.json();
                 displaySearchResults(results);
             } catch (error) {
@@ -92,6 +97,7 @@ function setupSearch() {
             }
         }
     });
+    
 }
 
 function displaySearchResults(results) {
@@ -102,12 +108,18 @@ function displaySearchResults(results) {
         const blogCard = document.createElement('div');
         blogCard.className = 'blog-card';
         blogCard.innerHTML = `
-            <h2>${blog.title}</h2>
-            <p>${blog.content.substring(0, 100)}...</p>
+            <h2><a href="read-blog/blog-detail.html?id=${blog.id}">${blog.title}</a></h2>
+            <p><strong>Category:</strong> ${blog.category}</p>
+            <p><strong>Tags:</strong> ${blog.tags}</p>
+            <p><i class="far fa-eye"></i> ${blog.readTime} min read</p>
         `;
         blogContainer.appendChild(blogCard);
     });
 }
+
+
+
+
 
 // Run setup functions when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
